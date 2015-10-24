@@ -17,11 +17,11 @@ song.set('song', 'Jumpman');
 song.save();*/
 
 //allows stars to be shown in the "ratings part"
-/*$('#ratings').raty({
-  score: function() {
-    return $(this).attr('data-score');
-  }
-});*/
+$('#ratings').raty();//{
+ // score: function() {
+ //   return $(this).attr('data-score');
+ // }
+//});
 
 // Click event when form is submitted
 $('form').submit(function() {

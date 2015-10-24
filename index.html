@@ -8,9 +8,12 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 		
         <!-- Include parse library here -->
+        
         <script src="//www.parsecdn.com/js/parse-1.6.0.min.js"></script>
-        <script type="text/javascript" src="raty-2.7.0/lib/jquery.raty.js"></script>
         <script type="text/javascript" src="raty-2.7.0/vendor/jquery.js"></script>
+        <script type="text/javascript" src="raty-2.7.0/lib/jquery.raty.js"></script>
+        <link rel="stylesheet" href="raty-2.7.0/lib/jquery.raty.css" />
+
         <!-- <script type="text/javascript" src="js/review.js"></script> -->
     </head>
     <body>
@@ -18,7 +21,8 @@
             <h1>The Wolf of Wall Street</h1>
             <img src="http://ia.media-imdb.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX214_AL_.jpg" alt="the-wolf" style="width:214px;height:317px;">
             <h3>Average Rating: </h3>
-            <div id="ratings" data-score="1"></div>
+            <div id="ratings"> <!-- style="cursur: pointer;" data-score="1"> -->
+            </div>
             <h3>Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.</h3>
         </div>
     	<div class="container">
@@ -43,6 +47,6 @@
             <ol id="list">
             </ol>
         </div>
+        <script type="text/javascript" src="js/review.js"></script>
     </body>
-    <script type="text/javascript" src="js/review.js"></script>
 </html>
