@@ -1,5 +1,5 @@
 # movie-review
-
+students.washington.edu/<code>jamesp21</code>/info343/<code>movie-review</code>
 1). Did you receive help from any other sources (classmates, etc.)? If so, please list who.
 -No, only the example from class
 2). Did you complete any advanced extensions to this challenge? If so, what?
