@@ -1,6 +1,10 @@
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
 
-div #reviews {
+div .sections {
     background-color: lightgrey;
-    width: 100%;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    width:85%;
+    height: fixed;
 }
+
