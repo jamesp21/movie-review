@@ -1,10 +1,60 @@
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
 
+.container {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: auto;
+}
+
 div .sections {
     background-color: lightgrey;
     border-radius: 25px;
     margin-bottom: 20px;
-    width:85%;
     height: fixed;
+    padding: 30px;
+    width: auto;
 }
 
+p {
+	text-align: justify;
+	font-size: 25px;
+}
+
+.up-vote {
+  display: inline-block;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: url('http://www2.psd100.com/ppp/2013/11/0501/thumbs-up-icon-1105174202.png');
+  background-position: 0 px;
+  float: right;
+} 
+
+.up-vote.on {
+  background-position: 0 2px;
+}
+
+.down-vote {
+  display: inline-block;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: url('http://www2.psd100.com/ppp/2013/11/0501/thumbs-down-icon-1105174210.png');
+  background-position: 0 px;
+  float: right;
+} 
+
+.down-vote.on {
+  background-position: 0 2px;
+}
+
+#stars {
+  float: left;
+  padding-right: 25px;
+}
+
+button {
+  float: right;
+}

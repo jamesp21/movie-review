@@ -7,7 +7,6 @@ var totalRatings = 0;
 var totalReviews = 0;
 var averageRatings = 0;
 //allows stars to be shown in the "ratings part"
-$('#average-ratings').raty({ path: 'raty-2.7.0/lib/images', readOnly: true, score: averageRatings});
 $('#ratings').raty({ path: 'raty-2.7.0/lib/images'});
 
 // Click event when form is submitted
@@ -22,6 +21,8 @@ $('form').submit(function() {
 	review.set('description', $(description).val());
 	// Set a property 'rating' equal to a rating
 	review.set('ratings', $('#ratings').raty('score'));
+	review.set('up', 0);
+	review.set('down', 0);
 	$(title).val(" ");
 	$(description).val(" ");
 	// Save your instance of your review -- and go see it on parse.com!
@@ -41,7 +42,6 @@ var getData = function() {
 	// Set a parameter for your query -- where the description property isn't missing
 	//query.exists('website'); or
 	query.notEqualTo('description', ' ');
-
 	/* Execute the query using ".find".  When successful:
 	    - Pass the returned data into your buildList function
 	*/
@@ -56,40 +56,57 @@ var buildList = function(data) {
 	$('ol').empty()
 	// Loop through your data, and pass each element to the addItem function
 	data.forEach(function(d){
-
 		addItem(d);
 	})
 }
 
 // This function takes in an item, adds it to the screen
 var addItem = function(item) {
-	//console.log('addItem', item)
 	// Get parameters (website, band, song) from the data item passed to the function
 	totalReviews++;
 	var title = item.get('title');
 	var description = item.get('description');
 	var ratings =item.get('ratings');
 		totalRatings += ratings;
-		console.log(totalRatings);
 		averageRatings = totalRatings / totalReviews;
-		console.log(totalReviews);
-		console.log(averageRatings);
 	// Append li that includes text from the data item
-	var stars = $('#reviews').raty({ path: 'raty-2.7.0/lib/images', score: ratings});
-	var li = $('<div class="sections"' + ratings + " " + title + '<br>'  + description + '<br></div>')
+	var li = $('<div class="sections"><p>' + title + '<br>'  + description + '<br><p></div>');
+	var stars = $('<span id="stars">').raty({ path: 'raty-2.7.0/lib/images', readOnly: true, score: ratings});
+	var upVote = $('<span class="up-vote"> </span>');
+	var downVote = $('<span class="down-vote"> </span>');
 	var button = $('<button class ="btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>')
 	button.click(function(){
 		item.destroy({
 			success:getData
 		})
 	})
-	//console.log(stars)
-	//li.prepend(stars);
+	li.prepend(stars);
+	li.prepend(upVote);
+	li.prepend(downVote);
 	li.append(button);
 	$('ol').append(li)
-	//var stars = $('#reviews').raty({ path: 'raty-2.7.0/lib/images', score: ratings});
+	$('.up-vote').click(function () {
+		item.increment('up');
+		item.save();
+		item.getData;
+	});
+	$('.down-vote').click(function () {
+		item.increment('down');
+		item.save();
+		item.getData;
+	});
+	if (item.get('down') + item.get('up') != 0) {
+		var total = item.get('up') + item.get('down');
+		var helpful = "";
+		if (total == 1){
+			helpful += "1 person found this review helpful";
+		}else {
+		helpful += item.get('up') + " out of " + total + " people found this review helpful";
+		}
+		li.append(helpful);
+	}
 	// Time pending, create a button that removes the data item on click
+	$('#average-ratings').raty({ path: 'raty-2.7.0/lib/images', readOnly: true, score: averageRatings});
 }
 // Call your getData function when the page loads
-//console.log(totalRatings);
 getData();
