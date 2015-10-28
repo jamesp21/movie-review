@@ -87,14 +87,16 @@ var addItem = function(item) {
 	$('ol').append(li)
 	$('.up-vote').click(function () {
 		item.increment('up');
-		item.save();
-		item.getData;
-	});
+		item.save(null, {
+			success:getData
+		})
+	})
 	$('.down-vote').click(function () {
 		item.increment('down');
-		item.save();
-		item.getData;
-	});
+		item.save(null, {
+			success:getData
+		})
+	})
 	if (item.get('down') + item.get('up') != 0) {
 		var total = item.get('up') + item.get('down');
 		var helpful = "";
